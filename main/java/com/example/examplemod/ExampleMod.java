@@ -1,7 +1,9 @@
 package com.example.examplemod;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -28,9 +30,27 @@ public class ExampleMod
 
     @Mod.EventBusSubscriber
     public static class RegistrationHandler {
+
+        @SubscribeEvent
+        public static void registerItems(ModelRegistryEvent event) {
+            ModItems.registerModels();
+        }
+
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
+            ModItems.register(event.getRegistry());
+            ModBlocks.registerItemBlocks(event.getRegistry());
+        }
 
+        @SubscribeEvent
+        public static void registerModels(ModelRegistryEvent event) {
+            ModItems.registerItemModels();
+            ModBlocks.registerItemModels();
+        }
+
+        @SubscribeEvent
+        public static void registerBlocks(RegistryEvent.Register<Block> event) {
+            ModBlocks.register(event.getRegistry());
         }
     }
 }
