@@ -3,3 +3,6 @@ item.ingot_copper.name=Copper Ingot
 
 # Blocks
 tile.ore_copper.name=Copper Ore
+
+item.corn.name=Corn
+item.corn_seed.name=Corn Seed

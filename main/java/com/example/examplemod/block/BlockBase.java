@@ -1,16 +1,19 @@
-package com.example.examplemod;
+package com.example.examplemod.block;
 
+import com.example.examplemod.ExampleMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
-public class BlockBase extends Block{
+public class BlockBase extends Block {
+
     protected String name;
 
     public BlockBase(Material material, String name) {
         super(material);
+        setCreativeTab(ExampleMod.creativeTab);
 
         this.name = name;
 
@@ -31,4 +34,5 @@ public class BlockBase extends Block{
         super.setCreativeTab(tab);
         return this;
     }
+
 }

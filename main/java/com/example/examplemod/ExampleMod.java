@@ -1,5 +1,7 @@
 package com.example.examplemod;
 
+import com.example.examplemod.block.ModBlocks;
+import com.example.examplemod.items.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -19,6 +21,7 @@ public class ExampleMod
 
     public static final String MODID = "examplemod";
     public static final String VERSION = "1.0";
+    public static final TutorialTab creativeTab = new TutorialTab();
     
     @EventHandler
     public void init(FMLInitializationEvent event)
@@ -26,15 +29,12 @@ public class ExampleMod
         // some example code
         System.out.println("DIRT BLOCK >> "+Blocks.DIRT.getUnlocalizedName());
         System.out.println(ModItems.ingotCopper.getRegistryName());
+        System.out.println(ModBlocks.oreCopper.getUnlocalizedName());
+        System.out.println(ModBlocks.oreCopper.getRegistryName());
     }
 
     @Mod.EventBusSubscriber
     public static class RegistrationHandler {
-
-        @SubscribeEvent
-        public static void registerItems(ModelRegistryEvent event) {
-            ModItems.registerModels();
-        }
 
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -43,14 +43,14 @@ public class ExampleMod
         }
 
         @SubscribeEvent
-        public static void registerModels(ModelRegistryEvent event) {
-            ModItems.registerItemModels();
-            ModBlocks.registerItemModels();
+        public static void registerBlocks(RegistryEvent.Register<Block> event) {
+            ModBlocks.register(event.getRegistry());
         }
 
         @SubscribeEvent
-        public static void registerBlocks(RegistryEvent.Register<Block> event) {
-            ModBlocks.register(event.getRegistry());
+        public static void registerModels(ModelRegistryEvent event) {
+            ModItems.registerModels();
+            ModBlocks.registerModels();
         }
     }
 }

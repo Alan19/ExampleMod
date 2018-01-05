@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.example.examplemod.block;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

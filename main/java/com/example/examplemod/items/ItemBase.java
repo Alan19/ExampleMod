@@ -1,5 +1,6 @@
-package com.example.examplemod;
+package com.example.examplemod.items;
 
+import com.example.examplemod.ExampleMod;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -8,6 +9,7 @@ public class ItemBase extends Item {
 
     public ItemBase(String name) {
         this.name = name;
+        setCreativeTab(ExampleMod.creativeTab);
         setUnlocalizedName(name);
         setRegistryName(name);
     }
